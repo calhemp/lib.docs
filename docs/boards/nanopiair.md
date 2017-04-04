@@ -1,4 +1,3 @@
-- images [can be flashed directly to eMMC and accessed to it's serial console](http://forum.armbian.com/index.php/topic/1580-nanopi-neo-air/page-9#entry17707) trough the one and only soldered USB port.
-- images are in preview / beta state. [Feedback is welcome](http://forum.armbian.com/index.php/topic/1580-nanopi-neo-air)! Those images might not be simple upgradable. For experts only.
-- to get Wi-Fi working use 'sudo nmtui'. Please note that the Air has no aerial so you need to attach an antenna to the u.FL connector!
-- Known issues with legacy images / testing needed: audio out in all variants
+- Wireless: Air has no aerial so you need to attach an antenna to the u.FL connector!
+- known issues with legacy images / testing needed: audio out in all variants
+- serial console gadget on the OTG port is avaliable after the system boots up. Please make sure that board is properly powered (i.e. with microUSB Y cable or via GPIO pins) because a standard PC USB port will not provide enough current to the board

@@ -43,15 +43,7 @@ It is safe to ignore WARNING: This key is not certified with a trusted signature
 
 **Important note:** Make sure you use a **good & reliable** SD card. If you encounter boot or stability troubles in over 95 percent of the time it's either insufficient power supply or related to SD card (bad card, bad card reader, something went wrong when burning the image). Armbian can simply not run on unreliable hardware so checking your SD card with either [F3](http://oss.digirati.com.br/f3/) or [H2testw](http://www.heise.de/download/h2testw.html) is mandatory if you run in problems. Since [counterfeit SD cards](http://www.happybison.com/reviews/how-to-check-and-spot-fake-micro-sd-card-8/) are still an issue checking with F3/H2testw directly after purchase is **highly recommended**.
 
-7z and zip archives can be uncompressed with [7-Zip](http://www.7-zip.org/) on Windows, [Keka](http://www.kekaosx.com/en/) on OS X and 7z on Linux (apt-get install p7zip-full). Raw images can be written with [Etcher](https://www.etcher.io) (all OS):
-
-	# Linux example: /dev/sdx is your sd card device
-	sudo dd bs=1M if=filename.img of=/dev/sdx
-	sync
-	# OS X example: /dev/[r]diskx is your sd card device:
-	diskutil unmountDisk diskx && dd bs=1m if=filename.img of=/dev/rdiskx && diskutil eject diskx
-
-Image writing takes up to 2 minutes on a good SD card.
+7z and zip archives can be uncompressed with [7-Zip](http://www.7-zip.org/) on Windows, [Keka](http://www.kekaosx.com/en/) on OS X and 7z on Linux (apt-get install p7zip-full). Raw images can be written with [Etcher](https://www.etcher.io) (all OS). Image writing takes up to 2 minutes on a good SD card.
 
 Also important: SD cards are optimised for sequential reads/writes as it's common in digital cameras. This is what the *speed class* is about. And while you shouldn't buy or use any card rated less than *class 10* you should especially take care to choose one that is known to show high random I/O performance since this is way more performance relevant when used with any SBC. Even cards advertised as being 'high speed' can show horribly low random IO performance in reality.
 
@@ -61,7 +53,7 @@ You won't be wrong picking one of these:
 [![Transcend Ultimate 16 GB UHS-I](http://www.armbian.com/wp-content/uploads/2016/03/sdcard-transcend-1.png)](http://www.amazon.com/gp/product/B00BLHWYWS)
 [![SanDisk Extreme Pro 16 GB UHS-I](http://www.armbian.com/wp-content/uploads/2016/03/sdcard-sandisk-1.png)](http://www.amazon.com/dp/B008HK1YAA)
 
-Detailed information regarding SD card performance:
+In case you chose an SD card that was already in use before please consider resetting it back to 'factory default' performance with [SD Formatter](https://www.sdcard.org/downloads/formatter_4/) before burning Armbian to it ([explanation in the forum](https://forum.armbian.com/index.php?/topic/3776-the-partition-is-not-resized-to-full-sd-card-size/&do=findComment&comment=27413)). Detailed information regarding 'factory default' SD card performance:
 
 - [SD card performance with Armbian - Thomas Kaiser](http://forum.armbian.com/index.php/topic/954-sd-card-performance/)
 - [Raspberry Pi microSD card performance comparison - Jeff Geerling](http://www.jeffgeerling.com/blogs/jeff-geerling/raspberry-pi-microsd-card)
@@ -71,7 +63,7 @@ Detailed information regarding SD card performance:
 
 Insert SD card into a slot and power the board. First boot takes around 3 minutes then it reboots and you will need to wait another one minute to login. This delay is because system updates package list and creates 128Mb emergency SWAP on the SD card.
 
-Normal boot (with DHCP) takes up to 35 seconds with a class 6 SD CARD and cheapest board.
+Normal boot (with DHCP) takes up to 35 seconds with a class 10 SD Card and cheapest board.
 
 # How to login? 
 

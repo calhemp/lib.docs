@@ -7,16 +7,17 @@ In some cases, the procedure is "less than obvious", so we document some basic e
 
 # Generic howto for Allwinner devices
 
-## Legacy or Vanilla kernel ?
+## Legacy or mainline kernel ?
 
-Many Armbian images come in two flavours : Legacy (using an older kernel version) and Vanilla (up-to-date kernel). Depending on kernel version, the procedure to enable/disable features is not the same :
+Many Armbian images come in two flavours : Legacy (using an older kernel version) and mainline (up-to-date kernel). Depending on kernel version, the procedure to enable/disable features is not the same :
 
- * Legacy kernel : FEX
- * Vanilla kernel : DT (Device Tree)
+ * Legacy kernel (3.4.x): FEX
+ * Legacy kernel (3.10.x): DT (Device Tree)
+ * Mainline kernel : DT (Device Tree) overlays
 
 ## How to reconfigure video output? ##
 
-This affect Vanilla kernel only.
+This affect mainline kernel only.
 
 U-Boot supports hdmi and lcd output on Allwinner sunxi SoCs, lcd output requires the `CONFIG_VIDEO_LCD_MODE` Kconfig value to be set.
 
@@ -48,7 +49,10 @@ The sunxi U-Boot driver supports the following video-mode options:
 - `overscan_x/overscan_y=<int>` - Set x/y overscan value
  This configures a black border on the left and right resp. top and bottom to deal with overscanning displays. Defaults to `overscan_x=32` and `overscan_y=20` for composite monitors, 0 for other monitors.
 
-For example to always use the hdmi connector, even if no cable is inserted, using edid info when available and otherwise initalizing it at 1024x768@60Hz, use: `setenv video-mode sunxi:1024x768-24@60,monitor=dvi,hpd=0,edid=1`.
+For example to always use the hdmi connector, even if no cable is inserted, using edid info when available and otherwise initalizing it at 1024x768@60Hz, use: `setenv video-mode sunxi:1024x768-24@60,monitor=dvi,hpd=0,edid=0`.
+
+Parameters regarding video must be saved into u-boot environment file since they must be read before reading boot script. You can do this by adding `saveenv` command at the end of boot script (boot.cmd). Remember to recompile boot.cmd to boot.scr and note that changes will come into action after second boot. 
+
 
 ## What flavour am I using ?
 
@@ -105,16 +109,6 @@ The last step is to change the symlink to use your custom BIN :
 ln -sf /boot/bin/custom.bin /boot/script.bin
 ```
 
-## Device Tree
-
-### Which file should I edit
-
-I use the following command and try to guess which file to use in `/boot/dtb/` :
-
-```
-cat /proc/device-tree/model
-```
-
 # H3 based Orange Pi, legacy kernel
 
 ## Enable serial /dev/ttyS3 on pins 8 and 10 of the 40 pin header
@@ -155,7 +149,7 @@ I2C
 
 ![](http://www.igorpecovnik.com/wp-content/uploads/2014/09/banana-i2c-display1.jpg)
 
-I am using [this code](https://github.com/vvromanov/cb_i2c_lcd) for Vanilla kernel and with [changed line](https://github.com/vvromanov/cb_i2c_lcd/blob/master/i2c_lcd.c#L28): /dev/i2c-%u = /dev/i2c-2 for Legacy kernel.
+I am using [this code](https://github.com/vvromanov/cb_i2c_lcd) for mainline kernel and with [changed line](https://github.com/vvromanov/cb_i2c_lcd/blob/master/i2c_lcd.c#L28): /dev/i2c-%u = /dev/i2c-2 for Legacy kernel.
 
 SPI
 

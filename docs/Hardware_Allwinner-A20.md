@@ -5,12 +5,12 @@
 Both kernels are stable and production ready, but you should use them for different purpuses since their basic support differ:
 
 - legacy: video acceleration, NAND support, connecting displays
-- vanilla: headless server, light desktop operations
+- mainline: headless server, office desktop operations (not multimedia oriented)
 
 ## Legacy ##
 System images with legacy kernel
 
-- Kernel [3.4.112](https://github.com/linux-sunxi/linux-sunxi) with large hardware support, headers and some firmware included
+- Kernel [3.4.x](https://github.com/linux-sunxi/linux-sunxi) with large hardware support, headers and some firmware included
 - Enabled audio devices: analog, 8 channel HDMI, spdif and I2S (if wired and enabled in HW configuration)
 - IR functional and preconfigured – tested with LG remote
 - [LIRC GPIO send and receive driver](https://github.com/igorpecovnik/lib/issues/135) – tested but unconfigured
@@ -25,15 +25,15 @@ System images with legacy kernel
 
 ### Bugs or limitation ###
 
-- NAND install sometime fails. Dirty but working workaround: install [Lubuntu to NAND](http://dl.cubieboard.org/software/a20-cubietruck/lubuntu/) with [Phoenix tools](http://docs.cubieboard.org/downloads) and run install again.
+- NAND install sometime fails. Workaround: install [Lubuntu to NAND](http://dl.cubieboard.org/software/a20-cubietruck/lubuntu/) with [Phoenix tools](http://docs.cubieboard.org/downloads) and run install again.
 - Shutdown results into reboot under certain conditions.
 
-## Vanilla ##
-System images with vanilla kernel
+## Mainline ##
+System images with mainline kernel
 
-- Kernel [4.6.2](http://www.kernel.org/) with large hardware support, headers and some firmware included
+- [Mainline](http://www.kernel.org/) with large hardware support, headers and some firmware included
 - [Docker ready](User-Guide_Advanced-Features/#how-to-run-docker)
-- Enabled audio devices: analog & USB playback
+- Enabled audio devices: analog, SPDIF (if available) & USB
 - [USB / UAS](http://linux-sunxi.org/USB/UAS) – more efficient disk access over USB (A20 and H3)
 - [CAN bus](https://en.wikipedia.org/wiki/CAN_bus) – Controller Area Network
 - [USB OTG connector](http://linux-sunxi.org/USB_Gadget) – OTG or host mode
@@ -44,7 +44,7 @@ System images with vanilla kernel
 ### Bugs or limitation ###
 
 - No HW acceleration for desktop and video decoding
-- NAND is not supported yet.
+- NAND is not supported yet
 - Screen output from kernel is set to HDMI by default. Boot loader can detect and switch, kernel not.
 - HDMI audio is not supported yet
 - SATA port multiplier support is disabled by default, can be enabled by adding kernel parameter `ahci_sunxi.enable_pmp=1`

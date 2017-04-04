@@ -1,14 +1,6 @@
-# How to switch kernels or upgrade from other systems?
+# How to switch kernels?
 
-If you are running **legacy kernel** and you want to switch to **vanilla**, **development** or vice versa, you can do it this way:
-
-		wget -q -O - http://upgrade.armbian.com | bash
-
-You will be prompted to select and confirm some actions. It's possible to upgrade **from any other distribution**. Note that this procedure upgrades only kernel with hardware definitions (bin, dtb, firmware and headers. Operating system and modifications remain as is.
-
-Check [this for manual way](http://www.armbian.com/kernel/) and more info.
-
-[su_youtube_advanced url="https:\/\/youtu.be\/iPAlPW3sv3I" controls="yes" showinfo="no" loop="yes" rel="no" modestbranding="yes"]
+Check [this for](http://www.armbian.com/kernel/) more info.
 
 # How to troubleshoot?
 
@@ -56,7 +48,7 @@ Than mount the SD card and download those files (This example is only for Banana
 	http://apt.armbian.com/pool/main/l/linux-upstream/linux-firmware-image-next-sunxi_4.5_armhf.deb
 	http://apt.armbian.com/pool/main/l/linux-upstream/linux-dtb-next-sunxi_4.5_armhf.deb
 
-This is just an example for: **Ubuntu Trusty, Lamobo R1, Vanilla kernel** (next). Alter packages naming according to [this](http://forum.armbian.com/index.php/topic/211-kernel-update-procedure-has-been-changed/).
+This is just an example for: **Ubuntu Trusty, Lamobo R1, mainline kernel** (next). Alter packages naming according to [this](http://forum.armbian.com/index.php/topic/211-kernel-update-procedure-has-been-changed/).
 
 Mount SD card and extract all those deb files to it's mount point.
 
